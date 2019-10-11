@@ -1,0 +1,16 @@
+apiVersion: v1
+kind: Pod
+metadata:
+ name: lab1-pod
+ namespace: web
+ labels:
+  environment: production
+  app: nginx
+spec:
+ containers:
+ - name: nginx-container
+   image: nginx:latest
+   command: ["nginx"]
+   args: ["-g","daemon off;","-q"]
+   ports:
+   - containerPort: 80
