@@ -1,0 +1,25 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+ name: candy-service-pod-a
+spec:
+ replicas: 1
+ selector:
+  matchLabels:
+   name: candy-service-app
+ template:
+  metadata:
+   labels:
+    name: candy-service-app
+  spec:
+   containers:
+   - name: candy-service-app
+     image: linuxacademycontent/candy-service:2
+     livenessProbe:
+      httpGet:
+        path: /healthz
+        port: 8081
+     readinessProbe:
+      httpGet:
+        path: /
+        port: 80

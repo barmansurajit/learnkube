@@ -1,0 +1,150 @@
+{
+    "apiVersion": "v1",
+    "kind": "Pod",
+    "metadata": {
+        "creationTimestamp": "2019-11-20T16:49:25Z",
+        "generateName": "candy-service-pod-a-6694475687-",
+        "labels": {
+            "name": "candy-service-app",
+            "pod-template-hash": "6694475687"
+        },
+        "name": "candy-service-pod-a-6694475687-v8kwv",
+        "namespace": "default",
+        "ownerReferences": [
+            {
+                "apiVersion": "apps/v1",
+                "blockOwnerDeletion": true,
+                "controller": true,
+                "kind": "ReplicaSet",
+                "name": "candy-service-pod-a-6694475687",
+                "uid": "d9348fdd-5b4f-4f65-8605-095afb0aaecf"
+            }
+        ],
+        "resourceVersion": "414648",
+        "selfLink": "/api/v1/namespaces/default/pods/candy-service-pod-a-6694475687-v8kwv",
+        "uid": "e1a963aa-f121-4cf5-9d8a-2a918fa5995f"
+    },
+    "spec": {
+        "containers": [
+            {
+                "image": "linuxacademycontent/candy-service:2",
+                "imagePullPolicy": "IfNotPresent",
+                "livenessProbe": {
+                    "failureThreshold": 3,
+                    "httpGet": {
+                        "path": "/healthz",
+                        "port": 8081,
+                        "scheme": "HTTP"
+                    },
+                    "periodSeconds": 10,
+                    "successThreshold": 1,
+                    "timeoutSeconds": 1
+                },
+                "name": "candy-service-app",
+                "readinessProbe": {
+                    "failureThreshold": 3,
+                    "httpGet": {
+                        "path": "/",
+                        "port": 80,
+                        "scheme": "HTTP"
+                    },
+                    "periodSeconds": 10,
+                    "successThreshold": 1,
+                    "timeoutSeconds": 1
+                },
+                "resources": {},
+                "terminationMessagePath": "/dev/termination-log",
+                "terminationMessagePolicy": "File",
+                "volumeMounts": [
+                    {
+                        "mountPath": "/var/run/secrets/kubernetes.io/serviceaccount",
+                        "name": "default-token-sjzpr",
+                        "readOnly": true
+                    }
+                ]
+            }
+        ],
+        "dnsPolicy": "ClusterFirst",
+        "enableServiceLinks": true,
+        "nodeName": "surajitbarman3c.mylabserver.com",
+        "priority": 0,
+        "restartPolicy": "Always",
+        "schedulerName": "default-scheduler",
+        "securityContext": {},
+        "serviceAccount": "default",
+        "serviceAccountName": "default",
+        "terminationGracePeriodSeconds": 30,
+        "tolerations": [
+            {
+                "effect": "NoExecute",
+                "key": "node.kubernetes.io/not-ready",
+                "operator": "Exists",
+                "tolerationSeconds": 300
+            },
+            {
+                "effect": "NoExecute",
+                "key": "node.kubernetes.io/unreachable",
+                "operator": "Exists",
+                "tolerationSeconds": 300
+            }
+        ],
+        "volumes": [
+            {
+                "name": "default-token-sjzpr",
+                "secret": {
+                    "defaultMode": 420,
+                    "secretName": "default-token-sjzpr"
+                }
+            }
+        ]
+    },
+    "status": {
+        "conditions": [
+            {
+                "lastProbeTime": null,
+                "lastTransitionTime": "2019-11-20T16:49:26Z",
+                "status": "True",
+                "type": "Initialized"
+            },
+            {
+                "lastProbeTime": null,
+                "lastTransitionTime": "2019-11-20T16:49:43Z",
+                "status": "True",
+                "type": "Ready"
+            },
+            {
+                "lastProbeTime": null,
+                "lastTransitionTime": "2019-11-20T16:49:43Z",
+                "status": "True",
+                "type": "ContainersReady"
+            },
+            {
+                "lastProbeTime": null,
+                "lastTransitionTime": "2019-11-20T16:49:25Z",
+                "status": "True",
+                "type": "PodScheduled"
+            }
+        ],
+        "containerStatuses": [
+            {
+                "containerID": "docker://a567bb2d1e5e257dfccdf8b13011829b1da673eec2b4b310647d46807d277479",
+                "image": "linuxacademycontent/candy-service:2",
+                "imageID": "docker-pullable://linuxacademycontent/candy-service@sha256:614fb2c1f251a53968564f0ab22576e6af4236df8c65e19508062541a54bf4fa",
+                "lastState": {},
+                "name": "candy-service-app",
+                "ready": true,
+                "restartCount": 0,
+                "state": {
+                    "running": {
+                        "startedAt": "2019-11-20T16:49:33Z"
+                    }
+                }
+            }
+        ],
+        "hostIP": "172.31.35.118",
+        "phase": "Running",
+        "podIP": "10.244.2.82",
+        "qosClass": "BestEffort",
+        "startTime": "2019-11-20T16:49:26Z"
+    }
+}
